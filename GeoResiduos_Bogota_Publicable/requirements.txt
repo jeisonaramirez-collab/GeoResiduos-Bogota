@@ -1,0 +1,10 @@
+flask>=3.0,<4
+fastapi>=0.115,<1.0
+uvicorn>=0.32,<1.0
+SQLAlchemy>=2.0,<3.0
+Pillow>=10,<13
+itsdangerous>=2.0,<3.0
+# Solo si utilizas PostgreSQL: instala también psycopg[binary]>=3.2
+
+gunicorn>=22,<24
+psycopg[binary]>=3.2,<4

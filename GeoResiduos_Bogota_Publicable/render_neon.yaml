@@ -1,0 +1,21 @@
+# Alternativa: cambia nombre a render.yaml si usarás Neon (persistencia más larga).
+# En Render se solicita DATABASE_URL de Neon al crear Blueprint.
+services:
+  - type: web
+    name: georesiduos-bogota
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn --bind 0.0.0.0:$PORT --workers 1 --timeout 90 flask_backend:app
+    healthCheckPath: /api/health
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: COOKIE_SECURE
+        value: 'true'
+      - key: LOAD_DEMO
+        value: 'true'
